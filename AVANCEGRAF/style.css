@@ -1,33 +1,115 @@
+@font-face {
+  font-family: pixelpoiiz;
+src: url(https://dl.dropbox.com/s/6ju4skeoofqwcqu/pixelpoiiz.ttf);
+}
+
+:root {
+  --amarillo: #fffb00;
+  --rosa-pastel: #ff71ce;
+  --morado-fondo: #6f5ad6; 
+  --blanco-neon: #fff;
+}
+
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #111;
+  padding: 0;
+  font-family: 'pixelpoiiz', sans-serif; 
+  background-image: url('img/descarga (1).gif');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: #1a0633;
   color: white;
-  text-align: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
-/* TODAS las pantallas */
+/* pantallas */
 .screen {
   display: none;
-  width: 100vw;
-  height: 100vh;
-  padding-top: 100px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 }
 
-/* Pantalla visible */
-.active {
-  display: block;
+.active { 
+  display: flex; 
+  animation: slideIn 0.4s ease-out; 
+}
+
+.title {
+  font-size: 6rem; 
+  color: var(--blanco-neon);
+  text-transform: none; 
+  text-align: center;
+  line-height: 1;
+  margin-bottom: 40px;
+  text-shadow: 
+    4px 4px 0px var(--amarillo),
+    0 0 20px rgba(255, 113, 206, 0.8);
+  animation: float 3s ease-in-out infinite, flicker 2s infinite;
+}
+
+.title.small { font-size: 3rem; margin-bottom: 15px; }
+
+
+.card {
+  background: rgba(111, 90, 214, 0.85); 
+  border: 5px solid var(--rosa-pastel);
+  padding: 40px;
+  border-radius: 30px;
+  box-shadow: 0 0 30px rgba(255, 113, 206, 0.5);
+  backdrop-filter: blur(8px);
 }
 
 button {
   display: block;
-  margin: 15px auto;
-  padding: 10px 30px;
-  font-size: 18px;
+  width: 280px;
+  margin: 20px auto;
+  padding: 12px;
+  font-family: 'pixelpoiiz', sans-serif;
+  font-size: 28px; 
+  color: var(--blanco-neon);
+  background: rgba(0, 0, 0, 0.2);
+  border: 3px solid var(--amarillo);
+  border-radius: 15px;
   cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
 }
 
+button:hover {
+  background: var(--amarillo);
+  color: #2d033b;
+  box-shadow: 0 0 25px var(--amarillo);
+  transform: scale(1.1) rotate(2deg);
+}
+
+/* --- ANIMACIONES --- */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+  20%, 24%, 55% { opacity: 0.8; }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Canvas del juego */
 canvas {
-  background: black;
-  border: 2px solid white;
+  border: 8px solid var(--rosa-pastel);
+  box-shadow: 0 0 40px var(--amarillo);
+  background: #000;
+  border-radius: 15px;
 }
