@@ -1,53 +1,117 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Shooter</title>
+    <title>slime out</title>
 </head>
 <body>
-    <div id="menu" class="screen active">
-  <h1 class="title">SLIME OUT</h1>
-  <div class="card">
-    <button onclick="showScreen('game')">jugar</button>
-    <button onclick="showScreen('config')">configuración</button>
-    <button onclick="showScreen('score')">puntuación</button>
+
+    <audio autoplay loop src="charli.mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+<div id="menu" class="screen active">
+    <button class="login-corner-btn" onclick="showScreen('login')">iniciar sesión</button>
+
+    <h1 class="title">SLIME OUT</h1>
+    <div class="card">
+        <button onclick="showScreen('game')">jugar</button>
+        <button onclick="showScreen('config')">configuración</button>
+        <button onclick="showScreen('score')">puntuación</button>
+    </div>
+</div>
+
+   <div id="login" class="screen">
+  <h1 class="title small">Iniciar Sesión</h1>
+  
+  <div class="card login-card">
+    <form action="/login_process.php">
+      <div class="input-group">
+        <label for="login-email">email</label>
+        <input type="text" placeholder="email" name="email" id="login-email" required>
+      </div>
+
+      <div class="input-group">
+        <label for="login-psw">contraseña</label>
+        <input type="password" placeholder="contraseña" name="psw" id="login-psw" required>
+      </div>
+
+      <div class="button-container">
+        <button type="submit" class="signupbtn">entrar</button>
+        <button type="button" class="cancelbtn" onclick="showScreen('menu')">volver</button>
+      </div>
+
+      <p class="no-account">
+        ¿no tienes cuenta? <a href="#" onclick="showScreen('signup')">regístrate</a>
+      </p>
+    </form>
   </div>
 </div>
 
-<div id="config" class="screen">
-  <h1 class="title">configuración</h1>
-  <div class="card">
-    <label>volumen
-      <input type="range">
-    </label>
-    <button onclick="showScreen('menu')">volver</button>
+    <div id="config" class="screen">
+        <h1 class="title">configuración</h1>
+        <div class="card config-card">
+            <form>
+                <div class="config-item">
+                    <label>efectos de sonido</label>
+                    <input type="range" min="0" max="100">
+                </div>
+                <div class="config-item">
+                    <label>música</label>
+                    <input type="range" min="0" max="100">
+                </div>
+                <div class="config-item checkbox-group">
+                    <label>pantalla completa</label>
+                    <input type="checkbox">
+                </div>
+            </form>
+            <button onclick="showScreen('menu')" class="btn-back">volver</button>
+        </div>
+    </div>
+
+    <div id="score" class="screen">
+        <h1 class="title">puntuación</h1>
+        <div class="card">
+            <p style="font-size: 24px; text-align: center;">máximo: 0000</p>
+            <button onclick="showScreen('menu')">volver</button>
+        </div>
+    </div>
+
+    <div id="game" class="screen">
+        <h1 class="title small">Slime Out</h1>
+        <canvas id="canvas" width="950" height="500"></canvas>
+        <button class="pauseBtn" onclick="showScreen('pause')">pausa</button>
+    </div>
+
+    <div id="pause" class="screen">
+        <h1 class="title small">PAUSA</h1>
+        <div class="card">
+            <button onclick="showScreen('game')">continuar</button>
+            <button onclick="showScreen('menu')">salir</button>
+        </div>
+    </div>
+
+    <div id="gameover" class="screen">
+  <h1 class="title" style="color: #ff4d4d; text-shadow: 4px 4px 0px var(--amarillo), 0 0 30px #ff4d4d;">¡PERDISTE!</h1>
+  <div class="card" style="border-color: #ff4d4d; box-shadow: 0 0 30px rgba(255, 77, 77, 0.5);">
+    <p class="score-text">puntuación final: <span id="final-score">0</span></p>
+    <button onclick="showScreen('game')">reintentar</button>
+    <button onclick="showScreen('menu')">menú principal</button>
   </div>
 </div>
 
-<div id="score" class="screen">
-  <h1 class="title">puntuación</h1>
-  <div class="card">
-    <p>máximo: 0000</p>
-    <button onclick="showScreen('menu')">volver</button>
-  </div>
-</div>
-
-<div id="game" class="screen">
-  <h1 class="title small">Slime Out</h1>
-  <canvas id="canvas" width="950" height="500"></canvas>
-  <button class="pauseBtn" onclick="pauseGame()">pausa</button>
-</div>
-
-<div id="pause" class="screen">
-  <h1 class="slimeTitle">PAUSA</h1>
-  <div class="card">
-    <button onclick="resumeGame()">continuar</button>
+<div id="victory" class="screen">
+  <h1 class="title" style="color: var(--amarillo); text-shadow: 4px 4px 0px var(--rosa-pastel), 0 0 30px var(--amarillo);">¡VICTORIA!</h1>
+  <div class="card" style="border-color: var(--amarillo); box-shadow: 0 0 30px rgba(255, 251, 0, 0.5);">
+    <p class="score-text">¡eres el mejor cuidador de slimes!</p>
+    <p class="score-text">puntuación final: <span id="final-score">0</span></p>
+    <button onclick="showScreen('game')">jugar de nuevo</button>
     <button onclick="showScreen('menu')">salir</button>
   </div>
 </div>
 
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

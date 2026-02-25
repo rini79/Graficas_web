@@ -90,6 +90,208 @@ button:hover {
   transform: scale(1.1) rotate(2deg);
 }
 
+/* config */
+.config-card {
+  min-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.config-item {
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.config-item label {
+  font-size: 20px;
+  color: var(--amarillo);
+  text-shadow: 2px 2px 0px rgba(0,0,0,0.5);
+}
+
+/* sliders */
+input[type="range"] {
+  -webkit-appearance: none; 
+  appearance: none;      
+  width: 100%;
+  background: rgba(0,0,0,0.3);
+  border-radius: 10px;
+  height: 10px;
+  border: 2px solid var(--rosa-pastel);
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  background: var(--amarillo);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 10px var(--amarillo);
+}
+
+.checkbox-group {
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+}
+
+input[type="checkbox"] {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  accent-color: var(--rosa-pastel);
+}
+
+.btn-back {
+  width: 100% !important;
+  margin-top: 10px !important;
+  font-size: 22px !important;
+}
+
+/* login */
+.login-card {
+  max-width: 450px;
+  text-align: center;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: var(--rosa-pastel);
+  margin-bottom: 20px;
+}
+
+.input-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  font-size: 18px;
+  color: var(--amarillo);
+  margin-bottom: 5px;
+}
+
+
+.login-card input[type="text"],
+.login-card input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.4);
+  border: 2px solid var(--rosa-pastel);
+  border-radius: 10px;
+  color: white;
+  font-family: 'pixelpoiiz', sans-serif;
+  font-size: 16px;
+  outline: none;
+  transition: 0.3s;
+}
+
+.login-card input:focus {
+  border-color: var(--amarillo);
+  box-shadow: 0 0 10px var(--amarillo);
+}
+
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 15px 0;
+  font-size: 14px;
+}
+
+.terms {
+  font-size: 12px;
+  margin-bottom: 20px;
+}
+
+.terms a {
+  color: var(--rosa-pastel);
+  text-decoration: none;
+}
+
+.terms a:hover {
+  text-decoration: underline;
+}
+
+
+.button-container {
+  display: flex;
+  flex-direction: column; 
+  gap: 5px;
+}
+
+.cancelbtn {
+  border-color: #ff4d4d !important;
+  font-size: 20px !important;
+}
+
+.cancelbtn:hover {
+  background: #ff4d4d !important;
+  box-shadow: 0 0 20px #ff4d4d !important;
+}
+
+
+.login-corner-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: auto; 
+    padding: 10px 20px;
+    font-size: 18px !important; 
+    margin: 0;
+    z-index: 100; 
+    border-width: 2px;
+    box-shadow: 0 0 10px rgba(255, 251, 0, 0.3);
+    animation: pulse-glow 2s infinite ease-in-out;
+}
+
+@keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 10px rgba(255, 251, 0, 0.3); }
+    50% { box-shadow: 0 0 20px rgba(255, 251, 0, 0.6); }
+}
+
+@media (max-width: 600px) {
+    .login-corner-btn {
+        top: 10px;
+        left: 10px;
+        font-size: 14px !important;
+    }
+}
+
+
+.score-text {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--blanco-neon);
+  text-transform: uppercase;
+}
+
+#gameover.active {
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  50% { transform: translateX(10px); }
+  75% { transform: translateX(-10px); }
+}
+
+
+#final-score {
+  color: var(--amarillo);
+  font-weight: bold;
+}
 /* --- ANIMACIONES --- */
 @keyframes float {
   0%, 100% { transform: translateY(0); }
@@ -106,7 +308,6 @@ button:hover {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Canvas del juego */
 canvas {
   border: 8px solid var(--rosa-pastel);
   box-shadow: 0 0 40px var(--amarillo);
